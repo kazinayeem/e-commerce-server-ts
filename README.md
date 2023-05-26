@@ -22,4 +22,9 @@
         1. add to cart product ( only loged user )
         2. delete cart (  only loged user) 
     
- 4. order ( upcoming ........ )
+ 4. category  
+
+        1. add category (only admin)
+        2. get all category (public )
+
+5. order (comming soon ......)
