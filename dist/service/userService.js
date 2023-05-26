@@ -21,7 +21,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const registerAuser = (userData) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield (0, authService_1.findUserService)("email", userData.email);
     if (user)
-        throw (0, customerror_1.error)("user already exist", 403);
+        throw (0, customerror_1.error)("this email already exist", 403);
     const hash = yield bcrypt_1.default.hashSync(userData.password, 10);
     const newuser = new userModel_1.default({
         username: userData.username,

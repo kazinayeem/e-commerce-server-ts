@@ -9,5 +9,5 @@ app_1.default.listen(2002, () => {
     (0, db_1.db)().then((res) => {
         console.log(res);
     });
-    console.log("server is running port 3002");
+    console.log("server is running port 2002");
 });

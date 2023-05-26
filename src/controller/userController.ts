@@ -9,8 +9,7 @@ export const getAlluser = async (
   next: NextFunction
 ) => {
   try {
-    const users: any = await findUserService("_id", req.users?._id);
-
+    const users: any = await findUserService();
     return res.status(200).json(users);
   } catch (error) {
     next(error);
@@ -48,6 +47,13 @@ export const login = async (
       return res.status(201).json({ error });
     }
     const token = await loginService(user);
+    const expireDate = new Date();
+    expireDate.setTime(expireDate.getTime() + 23424);
+    res.cookie("token", token, {
+      expires: expireDate,
+      httpOnly: true,
+    });
+
     return res.status(200).json({ message: "user login  successfull", token });
   } catch (error) {
     next(error);

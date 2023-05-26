@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 
 export const registerAuser = async (userData: User) => {
   const user = await findUserService("email", userData.email);
-  if (user) throw error("user already exist", 403);
+  if (user) throw error("this email already exist", 403);
   const hash = await bcrypt.hashSync(userData.password, 10);
   const newuser = new userModel({
     username: userData.username,

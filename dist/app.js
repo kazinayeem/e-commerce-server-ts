@@ -9,12 +9,15 @@ const cors_1 = __importDefault(require("cors"));
 const userRoutes_1 = require("./routes/userRoutes");
 const productroutes_1 = require("./routes/productroutes");
 const cartRoutes_1 = require("./routes/cartRoutes");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const categoryRoutes_1 = require("./routes/categoryRoutes");
 const app = (0, express_1.default)();
 const applyMiddleware = [
     (0, morgan_1.default)("dev"),
     (0, cors_1.default)(),
     express_1.default.json(),
-    express_1.default.urlencoded({ extended: false }),
+    express_1.default.urlencoded({ extended: true }),
+    (0, cookie_parser_1.default)(),
 ];
 app.use(applyMiddleware);
 app.get("/", (req, res) => {
@@ -23,6 +26,7 @@ app.get("/", (req, res) => {
 app.use("/user/", userRoutes_1.userRoutes);
 app.use("/product/", productroutes_1.productRoutes);
 app.use("/cart", cartRoutes_1.cartRoutes);
+app.use("/category", categoryRoutes_1.categoryRoutes);
 app.use((req, res, next) => {
     return res.status(404).json({ message: "route not found" });
 });

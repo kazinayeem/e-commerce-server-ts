@@ -14,9 +14,8 @@ const validation_1 = require("../utils/validation");
 const userService_1 = require("../service/userService");
 const authService_1 = require("../service/authService");
 const getAlluser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     try {
-        const users = yield (0, authService_1.findUserService)("_id", (_a = req.users) === null || _a === void 0 ? void 0 : _a._id);
+        const users = yield (0, authService_1.findUserService)();
         return res.status(200).json(users);
     }
     catch (error) {
@@ -50,6 +49,12 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
             return res.status(201).json({ error });
         }
         const token = yield (0, userService_1.loginService)(user);
+        const expireDate = new Date();
+        expireDate.setTime(expireDate.getTime() + 23424);
+        res.cookie("token", token, {
+            expires: expireDate,
+            httpOnly: true,
+        });
         return res.status(200).json({ message: "user login  successfull", token });
     }
     catch (error) {
