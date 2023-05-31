@@ -24,10 +24,10 @@ export const register = async (
   try {
     const user = { username, email, password };
     const { error, valid } = validRegister(user);
-    if (!valid) return res.status(201).json({ error });
+    if (!valid) return res.status(200).json(error);
     const result = await registerAuser(user);
     res
-      .status(200)
+      .status(201)
       .json({ message: "user register successfull", user: result });
   } catch (error) {
     next(error);
@@ -44,7 +44,7 @@ export const login = async (
     const user: LoginUser = { email, password };
     const { error, valid } = validLogin(user);
     if (!valid) {
-      return res.status(201).json({ error });
+      return res.status(201).json(error);
     }
     const token = await loginService(user);
     const expireDate = new Date();
@@ -54,7 +54,7 @@ export const login = async (
       httpOnly: true,
     });
 
-    return res.status(200).json({ message: "user login  successfull", token });
+    return res.status(201).json({ message: "user login  successfull", token });
   } catch (error) {
     next(error);
   }

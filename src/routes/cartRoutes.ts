@@ -7,5 +7,4 @@ export const cartRoutes = express.Router();
 cartRoutes.delete("/:id",checkLogin, deleteController);
 cartRoutes.post("/",checkLogin, cartcontroller);
 cartRoutes.get("/", GetAllCart);
-// cartRoutes.post("/login", );
-// cartRoutes.get("/" , )
+

@@ -11,5 +11,3 @@ exports.cartRoutes = express_1.default.Router();
 exports.cartRoutes.delete("/:id", authCheck_1.checkLogin, cartController_1.deleteController);
 exports.cartRoutes.post("/", authCheck_1.checkLogin, cartController_1.cartcontroller);
 exports.cartRoutes.get("/", cartController_1.GetAllCart);
-// cartRoutes.post("/login", );
-// cartRoutes.get("/" , )

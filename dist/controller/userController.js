@@ -29,10 +29,10 @@ const register = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
         const user = { username, email, password };
         const { error, valid } = (0, validation_1.validRegister)(user);
         if (!valid)
-            return res.status(201).json({ error });
+            return res.status(200).json(error);
         const result = yield (0, userService_1.registerAuser)(user);
         res
-            .status(200)
+            .status(201)
             .json({ message: "user register successfull", user: result });
     }
     catch (error) {
@@ -46,7 +46,7 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
         const user = { email, password };
         const { error, valid } = (0, validation_1.validLogin)(user);
         if (!valid) {
-            return res.status(201).json({ error });
+            return res.status(201).json(error);
         }
         const token = yield (0, userService_1.loginService)(user);
         const expireDate = new Date();
@@ -55,7 +55,7 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
             expires: expireDate,
             httpOnly: true,
         });
-        return res.status(200).json({ message: "user login  successfull", token });
+        return res.status(201).json({ message: "user login  successfull", token });
     }
     catch (error) {
         next(error);
