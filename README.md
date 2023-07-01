@@ -9,12 +9,12 @@
 2. product   
 
 
-            1. getalluser 
-            2. single product
-            3. filter product
-            4. post product ( only access admin ) 
-            5.update product ( only access admin )
-            6. delete product (only access admin)
+    1. getalluser 
+    2. single product
+    3. filter product
+    4. post product ( only access admin ) 
+    5.update product ( only access admin )
+    6. delete product (only access admin)
     
 3. cart 
 

@@ -32,8 +32,9 @@ export const updateProductService = async (id: string, product: any) => {
 };
 
 export const findProduct = (key?: string, value?: string) => {
+
   if (key === "_id") {
-    return productModel.findById(value);
+    return productModel.findById(value)
   } else if (!key || !value) {
     return productModel.find();
   }

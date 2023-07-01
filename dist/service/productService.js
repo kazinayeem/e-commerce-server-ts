@@ -44,6 +44,7 @@ const updateProductService = (id, product) => __awaiter(void 0, void 0, void 0, 
 exports.updateProductService = updateProductService;
 const findProduct = (key, value) => {
     if (key === "_id") {
+        console.log(key, value);
         return productModel_1.default.findById(value);
     }
     else if (!key || !value) {
